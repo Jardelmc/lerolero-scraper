@@ -1,3 +1,4 @@
+require("dotenv").config();
 const selenium = require("selenium-webdriver");
 const chrome = require("selenium-webdriver/chrome");
 const mongoose = require("mongoose");
@@ -27,7 +28,6 @@ async function BuildDriver(celOwner) {
   const driver = await new selenium.Builder()
     .forBrowser("chrome")
     .setChromeOptions(new chrome.Options().headless().windowSize(screen))
-    //.setChromeOptions(options)
     .build();
 
   return driver;
@@ -94,10 +94,6 @@ async function getDriver() {
   const driver = await startScrap();
 
   return driver;
-
-  scraper(driver);
-  /*  while (true) {
-  } */
 }
 
 const driver = getDriver().then((driver) => {
