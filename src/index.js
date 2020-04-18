@@ -9,6 +9,7 @@ const PhraseSchema = mongoose.Schema(
     phrase: {
       type: String,
     },
+    used: Boolean,
   },
   { collection: "lerolero_phrases" }
 );
@@ -69,7 +70,7 @@ async function scraper(driver) {
 
       sitePhrase.then((text) => {
         if (!allPhrases.includes(text)) {
-          PhraseMongo.create({ phrase: text });
+          PhraseMongo.create({ phrase: text, used: false });
           count += 1;
           console.log(`Frases adicionadas: ${count}`);
 
